@@ -42,10 +42,9 @@ class Knight(
 
     override fun hashCode() = Objects.hash(Knight::class, name, maxHp, defense)
 
-    override fun toString() = "Knight { " +
-      "name: '$name', " +
-      "maxHp: $maxHp, " +
-      "defense: $defense, " +
-      "currentHp: $currentHp " +
-      "}"
+    override fun toString() = "Knight(" +
+        "name='$name' " +
+        "maxHp=$maxHp, " +
+        "currentHp=$currentHp, " +
+        "defense=$defense)"
 }
