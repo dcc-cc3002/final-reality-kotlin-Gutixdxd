@@ -8,6 +8,7 @@ import cl.uchile.dcc.finalreality.model.character.player.Engineer
 import cl.uchile.dcc.finalreality.model.character.player.Knight
 import cl.uchile.dcc.finalreality.model.character.player.Thief
 import cl.uchile.dcc.finalreality.model.character.player.WhiteMage
+import cl.uchile.dcc.finalreality.model.character.player.Brute
 import java.util.concurrent.LinkedBlockingQueue
 import kotlin.random.Random
 
@@ -52,6 +53,13 @@ fun main() {
         // Gives a random speed to each character to generate different waiting times
         val weapon = Weapon("", 0, Random.nextInt(1, 50), WeaponType.AXE)
         val character = Knight("$i", 10, 10, queue)
+        character.equip(weapon)
+        character.waitTurn()
+    }
+    for (i in 0 until 10) {
+        // Gives a random speed to each character to generate different waiting times
+        val weapon = Weapon("", 0, Random.nextInt(1, 50), WeaponType.AXE)
+        val character = Brute("$i", 10, 10, queue)
         character.equip(weapon)
         character.waitTurn()
     }
