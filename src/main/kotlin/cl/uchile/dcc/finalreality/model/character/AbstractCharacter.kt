@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit
  *    The queue with the characters waiting for their turn.
  *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~Your name~
+ * @author <a href="https://github.com/Gutixdxd">Guti</a>
  */
 abstract class AbstractCharacter(
     override val name: String,

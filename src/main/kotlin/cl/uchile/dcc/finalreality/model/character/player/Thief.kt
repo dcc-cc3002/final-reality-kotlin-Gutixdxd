@@ -23,7 +23,7 @@ import java.util.concurrent.BlockingQueue
  * @property currentHp The current HP of the character.
  *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~Your name~
+ * @author <a href="https://github.com/Gutixdxd">Guti</a>
  */
 class Thief(name: String, maxHp: Int, defense: Int, turnsQueue: BlockingQueue<GameCharacter>) :
   AbstractPlayerCharacter(name, maxHp, defense, turnsQueue) {

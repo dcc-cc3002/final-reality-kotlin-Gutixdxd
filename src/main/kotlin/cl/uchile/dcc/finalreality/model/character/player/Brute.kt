@@ -16,7 +16,7 @@ import java.util.concurrent.BlockingQueue
  *
  * @property currentHp The current HP of the character.
  *
- * @author ~Your name~
+ * @author <a href="https://github.com/Gutixdxd">Guti</a>
  */
 class Brute(
     name: String, maxHp: Int, defense: Int,
