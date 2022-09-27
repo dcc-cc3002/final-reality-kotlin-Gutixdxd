@@ -29,6 +29,7 @@ class Brute(
         name != other.name             -> false
         maxHp != other.maxHp           -> false
         defense != other.defense       -> false
+        currentHp != other.currentHp   -> false
         else                           -> true
     }
 

@@ -49,6 +49,8 @@ class WhiteMage(
         maxHp != other.maxHp           -> false
         maxMp != other.maxMp           -> false
         defense != other.defense       -> false
+        currentMp != other.currentMp   -> false
+        currentHp != other.currentHp   -> false
         else                           -> true
     }
 

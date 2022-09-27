@@ -35,6 +35,7 @@ class Thief(name: String, maxHp: Int, defense: Int, turnsQueue: BlockingQueue<Ga
         name != other.name             -> false
         maxHp != other.maxHp           -> false
         defense != other.defense       -> false
+        currentHp != other.currentHp   -> false
         else                           -> true
     }
 
