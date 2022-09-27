@@ -24,10 +24,11 @@ class Enemy(
     weight: Int,
     maxHp: Int,
     defense: Int,
+    attack: Int,
     turnsQueue: BlockingQueue<GameCharacter>
 ) : AbstractCharacter(name, maxHp, defense, turnsQueue) {
     val weight = Require.Stat(weight, "Weight") atLeast 1
-
+    val attack = Require.Stat(attack, "Attack") atLeast 0
     override fun equals(other: Any?) = when {
         this === other                 -> true
         other !is Enemy                -> false
@@ -36,6 +37,8 @@ class Enemy(
         weight != other.weight         -> false
         maxHp != other.maxHp           -> false
         defense != other.defense       -> false
+        currentHp != other.currentHp   -> false
+        attack != other.attack         -> false
         else                           -> true
     }
 
@@ -46,5 +49,6 @@ class Enemy(
         "maxHp=$maxHp, " +
         "currentHp=$currentHp, " +
         "weight=$weight, " +
-        "defense=$defense)"
+        "defense=$defense, " +
+        "attack=$attack)"
 }

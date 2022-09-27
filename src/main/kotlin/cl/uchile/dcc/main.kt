@@ -65,7 +65,7 @@ fun main() {
     }
     for (i in 0 until 10) {
         // Gives a random speed to each character to generate different waiting times
-        val character = Enemy("$i", 10, 10, 10,queue)
+        val character = Enemy("$i", 10, 10, 10,0,queue)
         character.waitTurn()
     }
     // Waits for 6 seconds to ensure that all characters have finished waiting
