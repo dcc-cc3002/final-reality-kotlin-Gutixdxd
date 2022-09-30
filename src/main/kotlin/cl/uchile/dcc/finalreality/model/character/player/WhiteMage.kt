@@ -9,7 +9,7 @@ package cl.uchile.dcc.finalreality.model.character.player
 
 import cl.uchile.dcc.finalreality.exceptions.Require
 import cl.uchile.dcc.finalreality.model.character.GameCharacter
-import java.util.*
+import java.util.Objects
 import java.util.concurrent.BlockingQueue
 
 /**
@@ -29,11 +29,11 @@ import java.util.concurrent.BlockingQueue
  * @author <a href="https://github.com/Gutixdxd">Guti</a>
  */
 class WhiteMage(
-  name: String,
-  maxHp: Int,
-  maxMp: Int,
-  defense: Int,
-  turnsQueue: BlockingQueue<GameCharacter>
+    name: String,
+    maxHp: Int,
+    maxMp: Int,
+    defense: Int,
+    turnsQueue: BlockingQueue<GameCharacter>
 ) : AbstractPlayerCharacter(name, maxHp, defense, turnsQueue) {
     val maxMp = Require.Stat(maxMp, "Max MP") atLeast 0
     var currentMp: Int = maxMp
@@ -42,16 +42,16 @@ class WhiteMage(
         }
 
     override fun equals(other: Any?) = when {
-        this === other                 -> true
-        other !is WhiteMage            -> false
+        this === other -> true
+        other !is WhiteMage -> false
         hashCode() != other.hashCode() -> false
-        name != other.name             -> false
-        maxHp != other.maxHp           -> false
-        maxMp != other.maxMp           -> false
-        defense != other.defense       -> false
-        currentMp != other.currentMp   -> false
-        currentHp != other.currentHp   -> false
-        else                           -> true
+        name != other.name -> false
+        maxHp != other.maxHp -> false
+        maxMp != other.maxMp -> false
+        defense != other.defense -> false
+        currentMp != other.currentMp -> false
+        currentHp != other.currentHp -> false
+        else -> true
     }
 
     override fun hashCode() = Objects.hash(WhiteMage::class, name, maxHp, maxMp, defense)
@@ -63,5 +63,4 @@ class WhiteMage(
         "defense=$defense, " +
         "maxMp=$maxMp, " +
         "currentMp=$currentMp)"
-
 }

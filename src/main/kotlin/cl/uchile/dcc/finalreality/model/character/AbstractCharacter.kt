@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit
 /**
  * An abstract class that holds the common behaviour of all the characters in the game.
  *
+ *
  * @property name
  *    The name of the character.
  * @property maxHp

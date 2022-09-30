@@ -1,3 +1,4 @@
+
 /*
  * "Final Reality" (c) by R8V and ~Your name~
  * "Final Reality" is licensed under a
@@ -35,14 +36,14 @@ class Engineer(
     AbstractPlayerCharacter(name, maxHp, defense, turnsQueue) {
 
     override fun equals(other: Any?) = when {
-        this === other                 -> true
-        other !is Engineer             -> false
+        this === other -> true
+        other !is Engineer -> false
         hashCode() != other.hashCode() -> false
-        name != other.name             -> false
-        maxHp != other.maxHp           -> false
-        defense != other.defense       -> false
-        currentHp != other.currentHp   -> false
-        else                           -> true
+        name != other.name -> false
+        maxHp != other.maxHp -> false
+        defense != other.defense -> false
+        currentHp != other.currentHp -> false
+        else -> true
     }
 
     override fun hashCode() =

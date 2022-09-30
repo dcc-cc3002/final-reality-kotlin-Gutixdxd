@@ -4,6 +4,7 @@ package cl.uchile.dcc.finalreality.model.character
  * This represents a character from the game.
  * A character can be controlled by the player or by the CPU (an enemy).
  *
+ *
  * @property name
  *    The name of the character.
  * @property maxHp

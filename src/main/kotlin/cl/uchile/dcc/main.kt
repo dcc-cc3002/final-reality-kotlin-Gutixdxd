@@ -1,14 +1,15 @@
 package cl.uchile.dcc
+
 import cl.uchile.dcc.finalreality.model.Weapon
 import cl.uchile.dcc.finalreality.model.WeaponType
 import cl.uchile.dcc.finalreality.model.character.Enemy
 import cl.uchile.dcc.finalreality.model.character.GameCharacter
 import cl.uchile.dcc.finalreality.model.character.player.BlackMage
+import cl.uchile.dcc.finalreality.model.character.player.Brute
 import cl.uchile.dcc.finalreality.model.character.player.Engineer
 import cl.uchile.dcc.finalreality.model.character.player.Knight
 import cl.uchile.dcc.finalreality.model.character.player.Thief
 import cl.uchile.dcc.finalreality.model.character.player.WhiteMage
-import cl.uchile.dcc.finalreality.model.character.player.Brute
 import java.util.concurrent.LinkedBlockingQueue
 import kotlin.random.Random
 
@@ -38,14 +39,14 @@ fun main() {
     for (i in 0 until 10) {
         // Gives a random speed to each character to generate different waiting times
         val weapon = Weapon("", 0, Random.nextInt(1, 50), WeaponType.STAFF)
-        val character = WhiteMage("$i", 10, 10,10, queue)
+        val character = WhiteMage("$i", 10, 10, 10, queue)
         character.equip(weapon)
         character.waitTurn()
     }
     for (i in 0 until 10) {
         // Gives a random speed to each character to generate different waiting times
         val weapon = Weapon("", 0, Random.nextInt(1, 50), WeaponType.STAFF)
-        val character = BlackMage("$i", 10, 10, 10,queue)
+        val character = BlackMage("$i", 10, 10, 10, queue)
         character.equip(weapon)
         character.waitTurn()
     }
@@ -65,7 +66,7 @@ fun main() {
     }
     for (i in 0 until 10) {
         // Gives a random speed to each character to generate different waiting times
-        val character = Enemy("$i", 10, 10, 10,0,queue)
+        val character = Enemy("$i", 10, 10, 10, 0, queue)
         character.waitTurn()
     }
     // Waits for 6 seconds to ensure that all characters have finished waiting

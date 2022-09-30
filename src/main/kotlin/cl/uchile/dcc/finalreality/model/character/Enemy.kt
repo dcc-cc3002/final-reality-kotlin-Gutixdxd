@@ -7,6 +7,7 @@ import java.util.concurrent.BlockingQueue
 /**
  * A class that holds all the information of a single enemy of the game.
  *
+ *
  * @param name The name of this enemy.
  * @property weight The weight of this enemy.
  * @property attack The attack of this enemy.

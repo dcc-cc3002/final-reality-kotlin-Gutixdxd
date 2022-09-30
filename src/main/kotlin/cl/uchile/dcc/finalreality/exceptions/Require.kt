@@ -20,7 +20,6 @@ object Require {
     /**
      * Helper class to represent a _stat_ constraint.
      * When a _stat_ constraint is not met, an [InvalidStatValueException] is thrown.
-     *
      * @property stat   the value of the stat to check
      * @property name   the name of the stat to check
      *

@@ -13,16 +13,16 @@ import cl.uchile.dcc.finalreality.model.Weapon
  * A character controlled by the user.
  *
  * @property equippedWeapon
+ *
  *    the weapon that the character is currently using
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
  * @author ~Your name~
  */
 interface PlayerCharacter {
-  val equippedWeapon: Weapon
+    val equippedWeapon: Weapon
 
-  /**
-   * Equips a weapon to the character.
-   */
-  fun equip(weapon: Weapon)
+    /**
+     *Equips a weapon to the character.
+     */
+    fun equip(weapon: Weapon)
 }
-
