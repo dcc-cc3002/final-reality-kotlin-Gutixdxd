@@ -14,8 +14,8 @@ package cl.uchile.dcc.finalreality.model.items
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
  * @author <a href="https://github.com/Gutixdxd">Guti</a>
  */
-abstract class AbstractWeapon (
+abstract class AbstractWeapon(
     val name: String,
     val damage: Int,
     val weight: Int,
-    )
+)

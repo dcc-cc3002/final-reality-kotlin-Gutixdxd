@@ -16,11 +16,11 @@ import java.util.Objects
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
  * @author <a href="https://github.com/Gutixdxd">Guti</a>
  */
-class Knife (
+class Knife(
     name: String,
     damage: Int,
     weight: Int
-): AbstractWeapon(name,damage, weight){
+) : AbstractWeapon(name, damage, weight) {
 
     override fun equals(other: Any?) = when {
         this === other -> true
@@ -34,5 +34,8 @@ class Knife (
 
     override fun hashCode() = Objects.hash(Knife::class, name, damage, weight)
 
-    override fun toString() = "Knife { name: $name, damage: $damage, weight: $weight)"
+    override fun toString() = "Thief(" +
+        "name='$name' " +
+        "maxHp=$damage, " +
+        "defense=$weight)"
 }
