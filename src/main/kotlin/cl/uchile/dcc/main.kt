@@ -8,11 +8,11 @@ import cl.uchile.dcc.finalreality.model.character.player.Engineer
 import cl.uchile.dcc.finalreality.model.character.player.Knight
 import cl.uchile.dcc.finalreality.model.character.player.Thief
 import cl.uchile.dcc.finalreality.model.character.player.WhiteMage
-import cl.uchile.dcc.finalreality.model.items.Knife
-import cl.uchile.dcc.finalreality.model.items.Sword
-import cl.uchile.dcc.finalreality.model.items.Staff
 import cl.uchile.dcc.finalreality.model.items.Axe
 import cl.uchile.dcc.finalreality.model.items.Bow
+import cl.uchile.dcc.finalreality.model.items.Knife
+import cl.uchile.dcc.finalreality.model.items.Staff
+import cl.uchile.dcc.finalreality.model.items.Sword
 import java.util.concurrent.LinkedBlockingQueue
 import kotlin.random.Random
 
