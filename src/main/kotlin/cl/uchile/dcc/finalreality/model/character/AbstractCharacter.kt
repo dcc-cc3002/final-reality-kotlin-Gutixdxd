@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit
 /**
  * An abstract class that holds the common behaviour of all the characters in the game.
  *
+ *
  * @property name
  *    The name of the character.
  * @property maxHp
@@ -20,7 +21,7 @@ import java.util.concurrent.TimeUnit
  *    The queue with the characters waiting for their turn.
  *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~Your name~
+ * @author <a href="https://github.com/Gutixdxd">Guti</a>
  */
 abstract class AbstractCharacter(
     override val name: String,

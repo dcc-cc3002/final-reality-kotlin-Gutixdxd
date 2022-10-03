@@ -16,4 +16,14 @@ enemies controlled by the computer.
 
 ---
 
-**The rest of the documentation is left for the users of this template to complete**
+Main.kt provides a test for all the functions in Final Reality yet, such as create and equip weapons
+, create characters and enemies with their respective equals, tostring, and waitTurn test.
+
+Characters and enemies cannot fight yet, but it can be created and weapons can be equipped to 
+characters.
+
+Brute class created, this class only can use swords and axes
+
+Style changes all over the code
+
+Weapon implementation changed to have an abstract class which extends to every type of weapon
