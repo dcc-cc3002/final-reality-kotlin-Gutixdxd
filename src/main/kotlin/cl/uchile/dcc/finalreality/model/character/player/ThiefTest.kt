@@ -1,6 +1,10 @@
 package cl.uchile.dcc.finalreality.model.character.player
 
 import cl.uchile.dcc.finalreality.model.character.GameCharacter
+import cl.uchile.dcc.finalreality.model.items.Bow
+import cl.uchile.dcc.finalreality.model.items.Knife
+import cl.uchile.dcc.finalreality.model.items.Staff
+import cl.uchile.dcc.finalreality.model.items.Sword
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
@@ -61,5 +65,18 @@ class ThiefTest : FunSpec ({
     ){
         kazuma shouldNotBeSameInstanceAs felt
         kazuma shouldNotBe felt
+    }
+    test(
+        "weapon equipped should be the same"
+    ){
+        val knife= Knife("Chunchunmaru", 15, 3)
+        kazuma.equip(knife)
+        kazuma.equippedWeapon shouldBe knife
+        val sword= Sword("Chunchunmaru", 30, 15)
+        kazuma.equip(sword)
+        kazuma.equippedWeapon shouldBe sword
+        val bow= Bow("LuckyBow", 7, 3)
+        kazuma.equip(bow)
+        kazuma.equippedWeapon shouldBe bow
     }
 })

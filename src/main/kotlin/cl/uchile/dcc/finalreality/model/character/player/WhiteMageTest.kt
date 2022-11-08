@@ -1,6 +1,7 @@
 package cl.uchile.dcc.finalreality.model.character.player
 
 import cl.uchile.dcc.finalreality.model.character.GameCharacter
+import cl.uchile.dcc.finalreality.model.items.Staff
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
@@ -29,15 +30,15 @@ class WhiteMageTest : FunSpec ({
             JULIUS_NAME,
             JULIUS_MAXHP,
             JULIUS_MAXMP,
-            JULIUS_DEFENSE,
-            queueWM
+            queueWM,
+            JULIUS_DEFENSE
         )
         rudeus= WhiteMage(
             RUDEUS_NAME,
             RUDEUS_MAXHP,
             RUDEUS_MAXMP,
-            RUDEUS_DEFENSE,
-            queueWM
+            queueWM,
+            RUDEUS_DEFENSE
         )
     }
     test(
@@ -47,8 +48,8 @@ class WhiteMageTest : FunSpec ({
             JULIUS_NAME,
             JULIUS_MAXHP,
             JULIUS_MAXMP,
-            JULIUS_DEFENSE,
-            queueWM
+            queueWM,
+            JULIUS_DEFENSE
         )
         julius shouldNotBeSameInstanceAs juliusXiquito
         julius shouldBe juliusXiquito
@@ -56,8 +57,8 @@ class WhiteMageTest : FunSpec ({
             RUDEUS_NAME,
             RUDEUS_MAXHP,
             RUDEUS_MAXMP,
-            RUDEUS_DEFENSE,
-            queueWM
+            queueWM,
+            RUDEUS_DEFENSE
         )
         rudeus shouldNotBeSameInstanceAs Orsted
         rudeus shouldBe Orsted
@@ -72,5 +73,12 @@ class WhiteMageTest : FunSpec ({
         "Mp should be the same as the val that is in the beginning"
     ){
         julius.maxMp shouldBe JULIUS_MAXMP
+    }
+    test(
+        "weapon equipped should be the same"
+    ){
+        val staff= Staff("Grimorio", 40, 20)
+        julius.equip(staff)
+        julius.equippedWeapon shouldBe staff
     }
 })

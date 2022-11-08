@@ -1,6 +1,9 @@
 package cl.uchile.dcc.finalreality.model.character.player
 
 import cl.uchile.dcc.finalreality.model.character.GameCharacter
+import cl.uchile.dcc.finalreality.model.items.Axe
+import cl.uchile.dcc.finalreality.model.items.Staff
+import cl.uchile.dcc.finalreality.model.items.Sword
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
@@ -63,5 +66,15 @@ class BruteTest : FunSpec ({
     ){
         ksante shouldNotBeSameInstanceAs craig
         ksante shouldNotBe craig
+    }
+    test(
+        "weapon equipped should be the same"
+    ){
+        val axe= Axe("Ntofos", 15, 40)
+        ksante.equip(axe)
+        ksante.equippedWeapon shouldBe axe
+        val sword= Sword("AllOut", 30, 20)
+        ksante.equip(sword)
+        ksante.equippedWeapon shouldBe sword
     }
 })

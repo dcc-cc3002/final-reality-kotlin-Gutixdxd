@@ -1,6 +1,8 @@
 package cl.uchile.dcc.finalreality.model.character.player
 
 import cl.uchile.dcc.finalreality.model.character.GameCharacter
+import cl.uchile.dcc.finalreality.model.items.Axe
+import cl.uchile.dcc.finalreality.model.items.Bow
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
@@ -61,5 +63,15 @@ class EngineerTest : FunSpec ({
     ){
         senku shouldNotBeSameInstanceAs shikizakiKiki
         senku shouldNotBe shikizakiKiki
+    }
+    test(
+        "weapon equipped should be the same"
+    ){
+        val cience= Bow("Cience", 50, 30)
+        senku.equip(cience)
+        senku.equippedWeapon shouldBe cience
+        val axe= Axe("CienceStick", 2, 3)
+        senku.equip(axe)
+        senku.equippedWeapon shouldBe axe
     }
 })

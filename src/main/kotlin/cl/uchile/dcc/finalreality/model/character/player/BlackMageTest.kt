@@ -2,6 +2,7 @@ package cl.uchile.dcc.finalreality.model.character.player
 
 
 import cl.uchile.dcc.finalreality.model.character.GameCharacter
+import cl.uchile.dcc.finalreality.model.items.Staff
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
@@ -76,5 +77,12 @@ class BlackMageTest : FunSpec ({
         "Mp should be the same as the val that is in the beginning"
     ){
         drStrange.maxMp shouldBe STRANGE_MAXMP
+    }
+    test(
+        "weapon equipped should be the same"
+    ){
+        val staff=Staff("Gema del tiempo", 30, 12)
+        drStrange.equip(staff)
+        drStrange.equippedWeapon shouldBe staff
     }
 })

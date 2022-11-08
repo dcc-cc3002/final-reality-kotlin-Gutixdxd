@@ -1,6 +1,9 @@
 package cl.uchile.dcc.finalreality.model.character.player
 
 import cl.uchile.dcc.finalreality.model.character.GameCharacter
+import cl.uchile.dcc.finalreality.model.items.Axe
+import cl.uchile.dcc.finalreality.model.items.Knife
+import cl.uchile.dcc.finalreality.model.items.Staff
 import cl.uchile.dcc.finalreality.model.items.Sword
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
@@ -63,9 +66,16 @@ class KnightTest : FunSpec ({
         darkness shouldNotBe erza
     }
     test(
-        "Equip sword"
+        "weapon equipped should be the same"
     ){
-        val sword=Sword("lol", 10, 10)
+        val sword= Sword("VeryExpensiveSword", 100, 100)
         darkness.equip(sword)
+        darkness.equippedWeapon shouldBe sword
+        val axe= Axe("VeryExpensiveAxe", 50, 100)
+        darkness.equip(axe)
+        darkness.equippedWeapon shouldBe axe
+        val knife= Knife("VeryExpensiveKnife", 1, 12)
+        darkness.equip(knife)
+        darkness.equippedWeapon shouldBe knife
     }
 })
