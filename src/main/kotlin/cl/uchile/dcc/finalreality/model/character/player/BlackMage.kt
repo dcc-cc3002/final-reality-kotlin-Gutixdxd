@@ -75,4 +75,7 @@ class BlackMage(
     fun equipStaff(staff: Staff) {
         _equippedWeapon = staff
     }
+    fun equipKnife(knife: Knife) {
+        _equippedWeapon = knife
+    }
 }
