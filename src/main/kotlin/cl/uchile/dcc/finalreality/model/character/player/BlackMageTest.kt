@@ -31,15 +31,15 @@ class BlackMageTest : FunSpec ({
             STRANGE_NAME,
             STRANGE_MAXHP,
             STRANGE_MAXMP,
-            STRANGE_DEFENSE,
-            queueBM
+            queueBM,
+            STRANGE_DEFENSE
         )
         karthus= BlackMage(
             KARTHUS_NAME,
             KARTHUS_MAXHP,
             KARTHUS_MAXMP,
-            KARTHUS_DEFENSE,
-            queueBM
+            queueBM,
+            KARTHUS_DEFENSE
         )
     }
     test(
@@ -50,8 +50,8 @@ class BlackMageTest : FunSpec ({
             STRANGE_NAME,
             STRANGE_MAXHP,
             STRANGE_MAXMP,
+            queueBM,
             STRANGE_DEFENSE,
-            queueBM
             )
         drStrange shouldNotBeSameInstanceAs drStrangeMultiverso
         drStrange shouldBe drStrangeMultiverso
@@ -60,8 +60,8 @@ class BlackMageTest : FunSpec ({
             KARTHUS_NAME,
             KARTHUS_MAXHP,
             KARTHUS_MAXMP,
-            KARTHUS_DEFENSE,
-            queueBM
+            queueBM,
+            KARTHUS_DEFENSE
         )
         karthus shouldNotBeSameInstanceAs LaParcaKarthus
         karthus shouldBe LaParcaKarthus
