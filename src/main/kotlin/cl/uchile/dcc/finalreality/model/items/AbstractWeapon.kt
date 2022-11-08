@@ -18,4 +18,4 @@ abstract class AbstractWeapon(
     val name: String,
     val damage: Int,
     val weight: Int,
-)
+): weaponInterface

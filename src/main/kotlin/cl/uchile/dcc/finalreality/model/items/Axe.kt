@@ -1,5 +1,9 @@
 package cl.uchile.dcc.finalreality.model.items
 
+import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter
+import cl.uchile.dcc.finalreality.model.character.player.Brute
+import cl.uchile.dcc.finalreality.model.character.player.Engineer
+import cl.uchile.dcc.finalreality.model.character.player.Knight
 import java.util.Objects
 /**
  * A class that holds all the information of an Axe.
@@ -38,4 +42,23 @@ class Axe(
         "name='$name' " +
         "maxHp=$damage, " +
         "defense=$weight)"
+
+    private lateinit var _equippedTo: AbstractPlayerCharacter
+
+    override val equippedTo: AbstractPlayerCharacter
+        get() = _equippedTo
+
+    override fun equipToKnight(knight: Knight) {
+        knight.equipAxe(this)
+        _equippedTo=knight
+    }
+
+    override fun equipToBrute(brute: Brute) {
+        brute.equipAxe(this)
+        _equippedTo=brute
+    }
+    override fun equipToEnginner(engineer: Engineer) {
+        engineer.equipAxe(this)
+        _equippedTo=engineer
+    }
 }

@@ -1,6 +1,10 @@
 package cl.uchile.dcc.finalreality.model.character.player
 
 import cl.uchile.dcc.finalreality.model.character.GameCharacter
+import cl.uchile.dcc.finalreality.model.items.AbstractWeapon
+import cl.uchile.dcc.finalreality.model.items.Axe
+import cl.uchile.dcc.finalreality.model.items.Knife
+import cl.uchile.dcc.finalreality.model.items.Sword
 import java.util.Objects
 import java.util.concurrent.BlockingQueue
 
@@ -42,4 +46,19 @@ class Brute(
         "maxHp=$maxHp, " +
         "currentHp=$currentHp, " +
         "defense=$defense)"
+
+
+    override fun equip(weapon: AbstractWeapon) {
+        weapon.equipToBrute(this)
+    }
+
+    private lateinit var _equippedWeapon: AbstractWeapon
+    override val equippedWeapon: AbstractWeapon
+        get() = _equippedWeapon
+    fun equipSword(sword: Sword) {
+        _equippedWeapon = sword
+    }
+    fun equipAxe(axe: Axe) {
+        _equippedWeapon = axe
+    }
 }

@@ -1,5 +1,9 @@
 package cl.uchile.dcc.finalreality.model.items
 
+import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter
+import cl.uchile.dcc.finalreality.model.character.player.BlackMage
+import cl.uchile.dcc.finalreality.model.character.player.Thief
+import cl.uchile.dcc.finalreality.model.character.player.WhiteMage
 import java.util.Objects
 /**
  * A class that holds all the information of a Staff.
@@ -38,4 +42,19 @@ class Staff(
         "name='$name' " +
         "maxHp=$damage, " +
         "defense=$weight)"
+
+
+    private lateinit var _equippedTo: AbstractPlayerCharacter
+
+    override val equippedTo: AbstractPlayerCharacter
+        get() = _equippedTo
+
+    override fun equipToBlackMage(blackMage: BlackMage) {
+        blackMage.equipStaff(this)
+        _equippedTo=blackMage
+    }
+    override fun equipToWhiteMage(whiteMage: WhiteMage) {
+        whiteMage.equipStaff(this)
+        _equippedTo=whiteMage
+    }
 }

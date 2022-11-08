@@ -1,5 +1,8 @@
 package cl.uchile.dcc.finalreality.model.items
 
+import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter
+import cl.uchile.dcc.finalreality.model.character.player.Engineer
+import cl.uchile.dcc.finalreality.model.character.player.Thief
 import java.util.Objects
 /**
  * A class that holds all the information of a Bow.
@@ -38,4 +41,18 @@ class Bow(
         "name='$name' " +
         "maxHp=$damage, " +
         "defense=$weight)"
+
+    private lateinit var _equippedTo: AbstractPlayerCharacter
+
+    override val equippedTo: AbstractPlayerCharacter
+        get() = _equippedTo
+
+    override fun equipToEnginner(engineer: Engineer) {
+        engineer.equipBow(this)
+        _equippedTo=engineer
+    }
+    override fun equipToThief(thief: Thief) {
+        thief.equipBow(this)
+        _equippedTo=thief
+    }
 }

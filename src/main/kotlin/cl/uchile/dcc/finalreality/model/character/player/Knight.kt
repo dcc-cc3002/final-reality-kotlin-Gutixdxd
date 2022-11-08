@@ -8,6 +8,11 @@
 package cl.uchile.dcc.finalreality.model.character.player
 
 import cl.uchile.dcc.finalreality.model.character.GameCharacter
+import cl.uchile.dcc.finalreality.model.items.AbstractWeapon
+import cl.uchile.dcc.finalreality.model.items.Axe
+import cl.uchile.dcc.finalreality.model.items.Knife
+import cl.uchile.dcc.finalreality.model.items.Sword
+import cl.uchile.dcc.finalreality.model.items.weaponInterface
 import java.util.Objects
 import java.util.concurrent.BlockingQueue
 
@@ -50,4 +55,21 @@ class Knight(
         "maxHp=$maxHp, " +
         "currentHp=$currentHp, " +
         "defense=$defense)"
+
+    override fun equip(weapon: AbstractWeapon) {
+        weapon.equipToKnight(this)
+    }
+
+    private lateinit var _equippedWeapon: AbstractWeapon
+    override val equippedWeapon: AbstractWeapon
+        get() = _equippedWeapon
+    fun equipSword(sword: Sword) {
+        _equippedWeapon = sword
+    }
+    fun equipAxe(axe: Axe) {
+        _equippedWeapon = axe
+    }
+    fun equipKnife(knife: Knife) {
+        _equippedWeapon = knife
+    }
 }

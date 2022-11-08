@@ -1,5 +1,9 @@
 package cl.uchile.dcc.finalreality.model.items
 
+import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter
+import cl.uchile.dcc.finalreality.model.character.player.Brute
+import cl.uchile.dcc.finalreality.model.character.player.Knight
+import cl.uchile.dcc.finalreality.model.character.player.Thief
 import java.util.Objects
 /**
  * A class that holds all the information of a Sword.
@@ -38,4 +42,23 @@ class Sword(
         "name='$name' " +
         "maxHp=$damage, " +
         "defense=$weight)"
+
+    private lateinit var _equippedTo: AbstractPlayerCharacter
+
+    override val equippedTo: AbstractPlayerCharacter
+        get() = _equippedTo
+
+    override fun equipToKnight(knight: Knight) {
+        knight.equipSword(this)
+        _equippedTo=knight
+    }
+
+    override fun equipToBrute(brute: Brute) {
+        brute.equipSword(this)
+        _equippedTo=brute
+    }
+    override fun equipToThief(thief: Thief) {
+        thief.equipSword(this)
+        _equippedTo=thief
+    }
 }

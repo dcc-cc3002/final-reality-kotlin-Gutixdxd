@@ -9,6 +9,9 @@
 package cl.uchile.dcc.finalreality.model.character.player
 
 import cl.uchile.dcc.finalreality.model.character.GameCharacter
+import cl.uchile.dcc.finalreality.model.items.AbstractWeapon
+import cl.uchile.dcc.finalreality.model.items.Axe
+import cl.uchile.dcc.finalreality.model.items.Bow
 import java.util.Objects
 import java.util.concurrent.BlockingQueue
 
@@ -54,4 +57,20 @@ class Engineer(
         "maxHp=$maxHp, " +
         "currentHp=$currentHp, " +
         "defense=$defense)"
+
+
+    override fun equip(weapon: AbstractWeapon) {
+        weapon.equipToEnginner(this)
+    }
+
+    private lateinit var _equippedWeapon: AbstractWeapon
+    override val equippedWeapon: AbstractWeapon
+        get() = _equippedWeapon
+
+    fun equipAxe(axe: Axe) {
+        _equippedWeapon = axe
+    }
+    fun equipBow(bow: Bow) {
+        _equippedWeapon = bow
+    }
 }

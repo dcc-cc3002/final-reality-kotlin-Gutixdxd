@@ -9,6 +9,8 @@ package cl.uchile.dcc.finalreality.model.character.player
 
 import cl.uchile.dcc.finalreality.exceptions.Require
 import cl.uchile.dcc.finalreality.model.character.GameCharacter
+import cl.uchile.dcc.finalreality.model.items.AbstractWeapon
+import cl.uchile.dcc.finalreality.model.items.Staff
 import java.util.Objects
 import java.util.concurrent.BlockingQueue
 
@@ -31,15 +33,10 @@ import java.util.concurrent.BlockingQueue
 class WhiteMage(
     name: String,
     maxHp: Int,
-    maxMp: Int,
     defense: Int,
-    turnsQueue: BlockingQueue<GameCharacter>
-) : AbstractPlayerCharacter(name, maxHp, defense, turnsQueue) {
-    val maxMp = Require.Stat(maxMp, "Max MP") atLeast 0
-    var currentMp: Int = maxMp
-        set(value) {
-            field = Require.Stat(value, "Current MP") inRange 0..maxMp
-        }
+    turnsQueue: BlockingQueue<GameCharacter>,
+    maxMp: Int
+) : AbstractMage(name, maxHp, defense, turnsQueue, maxMp) {
 
     override fun equals(other: Any?) = when {
         this === other -> true
@@ -63,4 +60,15 @@ class WhiteMage(
         "defense=$defense, " +
         "maxMp=$maxMp, " +
         "currentMp=$currentMp)"
+
+    override fun equip(weapon: AbstractWeapon) {
+        weapon.equipToWhiteMage(this)
+    }
+
+    private lateinit var _equippedWeapon: AbstractWeapon
+    override val equippedWeapon: AbstractWeapon
+        get() = _equippedWeapon
+    fun equipStaff(staff: Staff) {
+        _equippedWeapon = staff
+    }
 }
