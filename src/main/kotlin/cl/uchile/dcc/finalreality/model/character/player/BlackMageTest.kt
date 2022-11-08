@@ -1,8 +1,6 @@
 package cl.uchile.dcc.finalreality.model.character.player
 
 
-
-
 import cl.uchile.dcc.finalreality.model.character.GameCharacter
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
@@ -11,7 +9,7 @@ import io.kotest.matchers.types.shouldNotBeSameInstanceAs
 import java.util.concurrent.LinkedBlockingQueue
 
 
-val queue = LinkedBlockingQueue<GameCharacter>()
+val queueBM = LinkedBlockingQueue<GameCharacter>()
 
 private const val STRANGE_NAME= "drStrange"
 private const val STRANGE_MAXHP= 12
@@ -25,6 +23,7 @@ private const val KARTHUS_DEFENSE= 10
 
 
 class BlackMageTest : FunSpec ({
+
     lateinit var drStrange : BlackMage
     lateinit var karthus : BlackMage
     beforeEach{
@@ -33,14 +32,14 @@ class BlackMageTest : FunSpec ({
             STRANGE_MAXHP,
             STRANGE_MAXMP,
             STRANGE_DEFENSE,
-            queue
+            queueBM
         )
         karthus= BlackMage(
             KARTHUS_NAME,
             KARTHUS_MAXHP,
             KARTHUS_MAXMP,
             KARTHUS_DEFENSE,
-            queue
+            queueBM
         )
     }
     test(
@@ -52,7 +51,7 @@ class BlackMageTest : FunSpec ({
             STRANGE_MAXHP,
             STRANGE_MAXMP,
             STRANGE_DEFENSE,
-            queue
+            queueBM
             )
         drStrange shouldNotBeSameInstanceAs drStrangeMultiverso
         drStrange shouldBe drStrangeMultiverso
@@ -62,7 +61,7 @@ class BlackMageTest : FunSpec ({
             KARTHUS_MAXHP,
             KARTHUS_MAXMP,
             KARTHUS_DEFENSE,
-            queue
+            queueBM
         )
         karthus shouldNotBeSameInstanceAs LaParcaKarthus
         karthus shouldBe LaParcaKarthus
