@@ -58,7 +58,6 @@ class Engineer(
         "currentHp=$currentHp, " +
         "defense=$defense)"
 
-
     override fun equip(weapon: AbstractWeapon) {
         weapon.equipToEnginner(this)
     }

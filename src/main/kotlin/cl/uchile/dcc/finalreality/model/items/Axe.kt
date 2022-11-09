@@ -50,15 +50,15 @@ class Axe(
 
     override fun equipToKnight(knight: Knight) {
         knight.equipAxe(this)
-        _equippedTo=knight
+        _equippedTo = knight
     }
 
     override fun equipToBrute(brute: Brute) {
         brute.equipAxe(this)
-        _equippedTo=brute
+        _equippedTo = brute
     }
     override fun equipToEnginner(engineer: Engineer) {
         engineer.equipAxe(this)
-        _equippedTo=engineer
+        _equippedTo = engineer
     }
 }

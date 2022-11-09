@@ -2,7 +2,6 @@ package cl.uchile.dcc.finalreality.model.items
 
 import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter
 import cl.uchile.dcc.finalreality.model.character.player.BlackMage
-import cl.uchile.dcc.finalreality.model.character.player.Brute
 import cl.uchile.dcc.finalreality.model.character.player.Knight
 import cl.uchile.dcc.finalreality.model.character.player.Thief
 import java.util.Objects
@@ -51,14 +50,14 @@ class Knife(
 
     override fun equipToKnight(knight: Knight) {
         knight.equipKnife(this)
-        _equippedTo=knight
+        _equippedTo = knight
     }
     override fun equipToThief(thief: Thief) {
         thief.equipKnife(this)
-        _equippedTo=thief
+        _equippedTo = thief
     }
     override fun equipToBlackMage(blackMage: BlackMage) {
         blackMage.equipKnife(this)
-        _equippedTo=blackMage
+        _equippedTo = blackMage
     }
 }

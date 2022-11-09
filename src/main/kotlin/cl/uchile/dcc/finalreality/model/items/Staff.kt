@@ -2,7 +2,6 @@ package cl.uchile.dcc.finalreality.model.items
 
 import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter
 import cl.uchile.dcc.finalreality.model.character.player.BlackMage
-import cl.uchile.dcc.finalreality.model.character.player.Thief
 import cl.uchile.dcc.finalreality.model.character.player.WhiteMage
 import java.util.Objects
 /**
@@ -43,7 +42,6 @@ class Staff(
         "maxHp=$damage, " +
         "defense=$weight)"
 
-
     private lateinit var _equippedTo: AbstractPlayerCharacter
 
     override val equippedTo: AbstractPlayerCharacter
@@ -51,10 +49,10 @@ class Staff(
 
     override fun equipToBlackMage(blackMage: BlackMage) {
         blackMage.equipStaff(this)
-        _equippedTo=blackMage
+        _equippedTo = blackMage
     }
     override fun equipToWhiteMage(whiteMage: WhiteMage) {
         whiteMage.equipStaff(this)
-        _equippedTo=whiteMage
+        _equippedTo = whiteMage
     }
 }

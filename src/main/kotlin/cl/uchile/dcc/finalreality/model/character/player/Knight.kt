@@ -12,7 +12,6 @@ import cl.uchile.dcc.finalreality.model.items.AbstractWeapon
 import cl.uchile.dcc.finalreality.model.items.Axe
 import cl.uchile.dcc.finalreality.model.items.Knife
 import cl.uchile.dcc.finalreality.model.items.Sword
-import cl.uchile.dcc.finalreality.model.items.weaponInterface
 import java.util.Objects
 import java.util.concurrent.BlockingQueue
 

@@ -49,10 +49,10 @@ class Bow(
 
     override fun equipToEnginner(engineer: Engineer) {
         engineer.equipBow(this)
-        _equippedTo=engineer
+        _equippedTo = engineer
     }
     override fun equipToThief(thief: Thief) {
         thief.equipBow(this)
-        _equippedTo=thief
+        _equippedTo = thief
     }
 }

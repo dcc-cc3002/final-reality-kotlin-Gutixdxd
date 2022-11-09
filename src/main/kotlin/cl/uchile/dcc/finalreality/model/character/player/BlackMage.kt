@@ -9,10 +9,8 @@ package cl.uchile.dcc.finalreality.model.character.player
 
 import cl.uchile.dcc.finalreality.model.character.GameCharacter
 import cl.uchile.dcc.finalreality.model.items.AbstractWeapon
-import cl.uchile.dcc.finalreality.model.items.Axe
 import cl.uchile.dcc.finalreality.model.items.Knife
 import cl.uchile.dcc.finalreality.model.items.Staff
-import cl.uchile.dcc.finalreality.model.items.Sword
 import java.util.Objects
 import java.util.concurrent.BlockingQueue
 
@@ -39,7 +37,6 @@ class BlackMage(
     turnsQueue: BlockingQueue<GameCharacter>,
     maxMp: Int
 ) : AbstractMage(name, maxHp, defense, turnsQueue, maxMp) {
-
 
     override fun equals(other: Any?) = when {
         this === other -> true

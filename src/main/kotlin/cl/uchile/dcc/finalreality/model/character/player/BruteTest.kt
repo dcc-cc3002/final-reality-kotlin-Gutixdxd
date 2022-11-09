@@ -12,30 +12,28 @@ import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.types.shouldNotBeSameInstanceAs
 import java.util.concurrent.LinkedBlockingQueue
 
-
 val queueB = LinkedBlockingQueue<GameCharacter>()
 
-private const val KSANTE_NAME= "ksante"
-private const val KSANTE_MAXHP= 30
-private const val KSANTE_DEFENSE= 40
+private const val KSANTE_NAME = "ksante"
+private const val KSANTE_MAXHP = 30
+private const val KSANTE_DEFENSE = 40
 
-private const val CRAIG_NAME= "craig"
-private const val CRAIG_MAXHP= 40
-private const val CRAIG_DEFENSE= 60
+private const val CRAIG_NAME = "craig"
+private const val CRAIG_MAXHP = 40
+private const val CRAIG_DEFENSE = 60
 
-
-class BruteTest : FunSpec ({
-    lateinit var ksante : Brute
-    lateinit var craig : Brute
-    beforeEach{
-        ksante= Brute(
+class BruteTest : FunSpec({
+    lateinit var ksante: Brute
+    lateinit var craig: Brute
+    beforeEach {
+        ksante = Brute(
             KSANTE_NAME,
             KSANTE_MAXHP,
             KSANTE_DEFENSE,
             queueB
         )
 
-        craig= Brute(
+        craig = Brute(
             CRAIG_NAME,
             CRAIG_MAXHP,
             CRAIG_DEFENSE,
@@ -44,8 +42,8 @@ class BruteTest : FunSpec ({
     }
     test(
         "Two enemies with the same parameters should be equal"
-    ){
-        val ksanteRedTeam= Brute(
+    ) {
+        val ksanteRedTeam = Brute(
             KSANTE_NAME,
             KSANTE_MAXHP,
             KSANTE_DEFENSE,
@@ -54,7 +52,7 @@ class BruteTest : FunSpec ({
         ksante shouldNotBeSameInstanceAs ksanteRedTeam
         ksante shouldBe ksanteRedTeam
 
-        val craigCringe= Brute(
+        val craigCringe = Brute(
             CRAIG_NAME,
             CRAIG_MAXHP,
             CRAIG_DEFENSE,
@@ -65,28 +63,28 @@ class BruteTest : FunSpec ({
     }
     test(
         "Two enemies with different parameters should not be equal"
-    ){
+    ) {
         ksante shouldNotBeSameInstanceAs craig
         ksante shouldNotBe craig
     }
     test(
         "weapon equipped should be the same"
-    ){
-        val axe= Axe("Ntofos", 15, 40)
+    ) {
+        val axe = Axe("Ntofos", 15, 40)
         ksante.equip(axe)
         ksante.equippedWeapon shouldBe axe
-        val sword= Sword("AllOut", 30, 20)
+        val sword = Sword("AllOut", 30, 20)
         ksante.equip(sword)
         ksante.equippedWeapon shouldBe sword
     }
     test(
         "weapon no allowed for this class, should be the last valid weapon equiped"
-    ){
-        val staff=Staff("Gema del tiempo", 30, 12)
-        val axe= Axe("Ntofos", 15, 40)
-        val sword= Sword("AllOut", 30, 20)
-        val bow= Bow("Cience", 50, 30)
-        val knife= Knife("Chunchunmaru", 15, 3)
+    ) {
+        val staff = Staff("Gema del tiempo", 30, 12)
+        val axe = Axe("Ntofos", 15, 40)
+        val sword = Sword("AllOut", 30, 20)
+        val bow = Bow("Cience", 50, 30)
+        val knife = Knife("Chunchunmaru", 15, 3)
         ksante.equip(axe)
         ksante.equippedWeapon shouldBe axe
         ksante.equip(sword)

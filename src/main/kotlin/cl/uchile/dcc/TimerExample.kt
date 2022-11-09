@@ -4,11 +4,7 @@ import cl.uchile.dcc.finalreality.model.character.GameCharacter
 import cl.uchile.dcc.finalreality.model.character.player.Thief
 import java.util.concurrent.LinkedBlockingQueue
 import kotlin.random.Random
-import cl.uchile.dcc.finalreality.model.items.Axe
-import cl.uchile.dcc.finalreality.model.items.Bow
 import cl.uchile.dcc.finalreality.model.items.Knife
-import cl.uchile.dcc.finalreality.model.items.Staff
-import cl.uchile.dcc.finalreality.model.items.Sword
 
 fun main() {
     val queue = LinkedBlockingQueue<GameCharacter>()

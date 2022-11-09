@@ -7,7 +7,6 @@
  */
 package cl.uchile.dcc.finalreality.model.character.player
 
-import cl.uchile.dcc.finalreality.exceptions.Require
 import cl.uchile.dcc.finalreality.model.character.GameCharacter
 import cl.uchile.dcc.finalreality.model.items.AbstractWeapon
 import cl.uchile.dcc.finalreality.model.items.Staff
