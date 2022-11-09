@@ -2,6 +2,8 @@ package cl.uchile.dcc.finalreality.model.character.player
 
 import cl.uchile.dcc.finalreality.model.character.GameCharacter
 import cl.uchile.dcc.finalreality.model.items.Axe
+import cl.uchile.dcc.finalreality.model.items.Bow
+import cl.uchile.dcc.finalreality.model.items.Knife
 import cl.uchile.dcc.finalreality.model.items.Staff
 import cl.uchile.dcc.finalreality.model.items.Sword
 import io.kotest.core.spec.style.FunSpec
@@ -75,6 +77,26 @@ class BruteTest : FunSpec ({
         ksante.equippedWeapon shouldBe axe
         val sword= Sword("AllOut", 30, 20)
         ksante.equip(sword)
+        ksante.equippedWeapon shouldBe sword
+    }
+    test(
+        "weapon no allowed for this class, should be the last valid weapon equiped"
+    ){
+        val staff=Staff("Gema del tiempo", 30, 12)
+        val axe= Axe("Ntofos", 15, 40)
+        val sword= Sword("AllOut", 30, 20)
+        val bow= Bow("Cience", 50, 30)
+        val knife= Knife("Chunchunmaru", 15, 3)
+        ksante.equip(axe)
+        ksante.equippedWeapon shouldBe axe
+        ksante.equip(sword)
+        ksante.equippedWeapon shouldBe sword
+        ksante.equip(staff)
+        ksante.equippedWeapon shouldNotBe staff
+        ksante.equip(bow)
+        ksante.equippedWeapon shouldNotBe bow
+        ksante.equip(knife)
+        ksante.equippedWeapon shouldNotBe knife
         ksante.equippedWeapon shouldBe sword
     }
 })

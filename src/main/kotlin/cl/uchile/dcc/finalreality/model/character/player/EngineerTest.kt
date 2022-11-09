@@ -3,6 +3,9 @@ package cl.uchile.dcc.finalreality.model.character.player
 import cl.uchile.dcc.finalreality.model.character.GameCharacter
 import cl.uchile.dcc.finalreality.model.items.Axe
 import cl.uchile.dcc.finalreality.model.items.Bow
+import cl.uchile.dcc.finalreality.model.items.Knife
+import cl.uchile.dcc.finalreality.model.items.Staff
+import cl.uchile.dcc.finalreality.model.items.Sword
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
@@ -72,6 +75,26 @@ class EngineerTest : FunSpec ({
         senku.equippedWeapon shouldBe cience
         val axe= Axe("CienceStick", 2, 3)
         senku.equip(axe)
+        senku.equippedWeapon shouldBe axe
+    }
+    test(
+        "weapon no allowed for this class, should be the last valid weapon equiped"
+    ){
+        val staff= Staff("Gema del tiempo", 30, 12)
+        val axe= Axe("Ntofos", 15, 40)
+        val sword= Sword("AllOut", 30, 20)
+        val bow= Bow("Cience", 50, 30)
+        val knife= Knife("Chunchunmaru", 15, 3)
+        senku.equip(bow)
+        senku.equippedWeapon shouldBe bow
+        senku.equip(sword)
+        senku.equippedWeapon shouldNotBe sword
+        senku.equip(axe)
+        senku.equippedWeapon shouldBe axe
+        senku.equip(staff)
+        senku.equippedWeapon shouldNotBe staff
+        senku.equip(knife)
+        senku.equippedWeapon shouldNotBe knife
         senku.equippedWeapon shouldBe axe
     }
 })

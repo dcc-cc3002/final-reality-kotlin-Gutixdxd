@@ -1,7 +1,11 @@
 package cl.uchile.dcc.finalreality.model.character.player
 
 import cl.uchile.dcc.finalreality.model.character.GameCharacter
+import cl.uchile.dcc.finalreality.model.items.Axe
+import cl.uchile.dcc.finalreality.model.items.Bow
+import cl.uchile.dcc.finalreality.model.items.Knife
 import cl.uchile.dcc.finalreality.model.items.Staff
+import cl.uchile.dcc.finalreality.model.items.Sword
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
@@ -79,6 +83,26 @@ class WhiteMageTest : FunSpec ({
     ){
         val staff= Staff("Grimorio", 40, 20)
         julius.equip(staff)
+        julius.equippedWeapon shouldBe staff
+    }
+    test(
+        "weapon no allowed for this class, should be the last valid weapon equiped"
+    ){
+        val staff=Staff("Gema del tiempo", 30, 12)
+        val axe= Axe("Ntofos", 15, 40)
+        val sword= Sword("AllOut", 30, 20)
+        val bow= Bow("Cience", 50, 30)
+        val knife= Knife("Chunchunmaru", 15, 3)
+        julius.equip(staff)
+        julius.equippedWeapon shouldBe staff
+        julius.equip(sword)
+        julius.equippedWeapon shouldNotBe sword
+        julius.equip(axe)
+        julius.equippedWeapon shouldNotBe axe
+        julius.equip(bow)
+        julius.equippedWeapon shouldNotBe bow
+        julius.equip(knife)
+        julius.equippedWeapon shouldNotBe knife
         julius.equippedWeapon shouldBe staff
     }
 })

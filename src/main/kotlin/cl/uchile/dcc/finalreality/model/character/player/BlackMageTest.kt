@@ -2,7 +2,11 @@ package cl.uchile.dcc.finalreality.model.character.player
 
 
 import cl.uchile.dcc.finalreality.model.character.GameCharacter
+import cl.uchile.dcc.finalreality.model.items.Axe
+import cl.uchile.dcc.finalreality.model.items.Bow
+import cl.uchile.dcc.finalreality.model.items.Knife
 import cl.uchile.dcc.finalreality.model.items.Staff
+import cl.uchile.dcc.finalreality.model.items.Sword
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
@@ -85,4 +89,24 @@ class BlackMageTest : FunSpec ({
         drStrange.equip(staff)
         drStrange.equippedWeapon shouldBe staff
     }
+    test(
+        "weapon no allowed for this class, should be the first weapon equiped"
+    ){
+        val staff=Staff("Gema del tiempo", 30, 12)
+        val axe= Axe("Ntofos", 15, 40)
+        val sword= Sword("AllOut", 30, 20)
+        val bow= Bow("Cience", 50, 30)
+        val knife= Knife("Chunchunmaru", 15, 3)
+        drStrange.equip(staff)
+        drStrange.equippedWeapon shouldBe staff
+        drStrange.equip(sword)
+        drStrange.equippedWeapon shouldNotBe sword
+        drStrange.equip(axe)
+        drStrange.equippedWeapon shouldNotBe axe
+        drStrange.equip(bow)
+        drStrange.equippedWeapon shouldNotBe bow
+        drStrange.equip(knife)
+        drStrange.equippedWeapon shouldBe knife
+    }
+
 })

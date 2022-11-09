@@ -2,6 +2,7 @@ package cl.uchile.dcc.finalreality.model.character.player
 
 import cl.uchile.dcc.finalreality.model.character.GameCharacter
 import cl.uchile.dcc.finalreality.model.items.Axe
+import cl.uchile.dcc.finalreality.model.items.Bow
 import cl.uchile.dcc.finalreality.model.items.Knife
 import cl.uchile.dcc.finalreality.model.items.Staff
 import cl.uchile.dcc.finalreality.model.items.Sword
@@ -75,6 +76,25 @@ class KnightTest : FunSpec ({
         darkness.equip(axe)
         darkness.equippedWeapon shouldBe axe
         val knife= Knife("VeryExpensiveKnife", 1, 12)
+        darkness.equip(knife)
+        darkness.equippedWeapon shouldBe knife
+    }
+    test(
+        "weapon no allowed for this class, should be the last valid weapon equiped"
+    ){
+        val staff=Staff("Gema del tiempo", 30, 12)
+        val axe= Axe("Ntofos", 15, 40)
+        val sword= Sword("AllOut", 30, 20)
+        val bow= Bow("Cience", 50, 30)
+        val knife= Knife("Chunchunmaru", 15, 3)
+        darkness.equip(sword)
+        darkness.equippedWeapon shouldBe sword
+        darkness.equip(staff)
+        darkness.equippedWeapon shouldNotBe staff
+        darkness.equip(axe)
+        darkness.equippedWeapon shouldBe axe
+        darkness.equip(bow)
+        darkness.equippedWeapon shouldNotBe bow
         darkness.equip(knife)
         darkness.equippedWeapon shouldBe knife
     }

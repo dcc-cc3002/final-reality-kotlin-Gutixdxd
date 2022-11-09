@@ -1,6 +1,7 @@
 package cl.uchile.dcc.finalreality.model.character.player
 
 import cl.uchile.dcc.finalreality.model.character.GameCharacter
+import cl.uchile.dcc.finalreality.model.items.Axe
 import cl.uchile.dcc.finalreality.model.items.Bow
 import cl.uchile.dcc.finalreality.model.items.Knife
 import cl.uchile.dcc.finalreality.model.items.Staff
@@ -78,5 +79,24 @@ class ThiefTest : FunSpec ({
         val bow= Bow("LuckyBow", 7, 3)
         kazuma.equip(bow)
         kazuma.equippedWeapon shouldBe bow
+    }
+    test(
+        "weapon no allowed for this class, should be the last valid weapon equiped"
+    ){
+        val staff=Staff("Gema del tiempo", 30, 12)
+        val axe= Axe("Ntofos", 15, 40)
+        val sword= Sword("AllOut", 30, 20)
+        val bow= Bow("Cience", 50, 30)
+        val knife= Knife("Chunchunmaru", 15, 3)
+        kazuma.equip(sword)
+        kazuma.equippedWeapon shouldBe sword
+        kazuma.equip(staff)
+        kazuma.equippedWeapon shouldNotBe staff
+        kazuma.equip(axe)
+        kazuma.equippedWeapon shouldNotBe axe
+        kazuma.equip(bow)
+        kazuma.equippedWeapon shouldBe bow
+        kazuma.equip(knife)
+        kazuma.equippedWeapon shouldBe knife
     }
 })
