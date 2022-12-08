@@ -7,6 +7,7 @@
  */
 package cl.uchile.dcc.finalreality.model.character.player
 
+import cl.uchile.dcc.finalreality.model.character.Enemy
 import cl.uchile.dcc.finalreality.model.character.GameCharacter
 import cl.uchile.dcc.finalreality.model.items.AbstractWeapon
 import cl.uchile.dcc.finalreality.model.items.Staff
@@ -69,5 +70,23 @@ class WhiteMage(
         get() = _equippedWeapon
     fun equipStaff(staff: Staff) {
         _equippedWeapon = staff
+    }
+
+    fun Heal(target: AbstractPlayerCharacter) {
+        if(this.currentMp>=15){
+            target.DoHeal((target.currentHp*0.3).toInt())
+        }
+    }
+    fun Poison(target: Enemy){
+        if(this.currentMp>=40){
+            this.currentMp-=40
+            target.Poison(this.equippedWeapon.damage)
+        }
+    }
+    fun Paralysis(target: Enemy){
+        if(this.currentMp>=40){
+            this.currentMp-=40
+            target.Paralysis()
+        }
     }
 }

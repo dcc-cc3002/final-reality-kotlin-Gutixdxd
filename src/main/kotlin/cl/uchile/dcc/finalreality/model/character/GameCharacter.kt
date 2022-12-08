@@ -28,4 +28,7 @@ interface GameCharacter {
      * seconds before adding the character to the queue.
      */
     fun waitTurn()
+    fun DoDamage(i: Int){
+        this.currentHp-=i
+    }
 }

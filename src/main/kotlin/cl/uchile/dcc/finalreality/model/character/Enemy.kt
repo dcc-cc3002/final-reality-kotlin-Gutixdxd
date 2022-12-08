@@ -1,6 +1,9 @@
 package cl.uchile.dcc.finalreality.model.character
 
 import cl.uchile.dcc.finalreality.exceptions.Require
+import cl.uchile.dcc.finalreality.model.character.player.BaseState
+import cl.uchile.dcc.finalreality.model.character.player.EnemyState
+import cl.uchile.dcc.finalreality.model.character.player.Poison
 import java.util.Objects
 import java.util.concurrent.BlockingQueue
 
@@ -31,6 +34,8 @@ class Enemy(
 ) : AbstractCharacter(name, maxHp, defense, turnsQueue) {
     val weight = Require.Stat(weight, "Weight") atLeast 1
     val attack = Require.Stat(attack, "Attack") atLeast 0
+    var state: EnemyState = BaseState()
+
     override fun equals(other: Any?) = when {
         this === other -> true
         other !is Enemy -> false
@@ -53,4 +58,24 @@ class Enemy(
         "weight=$weight, " +
         "defense=$defense, " +
         "attack=$attack)"
+
+    fun BaseState(): EnemyState {
+        this.state=BaseState()
+        return this.state
+    }
+    fun Paralysis(): EnemyState{
+        this.state=Paralysis()
+        return this.state
+    }
+    fun Poison(magicDamage: Int): EnemyState{
+        this.state=Poison(magicDamage)
+        return this.state
+    }
+    fun Burn(magicDamage: Int): EnemyState{
+        this.state=Burn(magicDamage)
+        return this.state
+    }
+    fun StartTurn(){
+        this.state.DoSomething()
+    }
 }

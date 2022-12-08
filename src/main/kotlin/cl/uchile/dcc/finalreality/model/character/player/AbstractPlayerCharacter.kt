@@ -1,6 +1,7 @@
 package cl.uchile.dcc.finalreality.model.character.player
 
 import cl.uchile.dcc.finalreality.model.character.AbstractCharacter
+import cl.uchile.dcc.finalreality.model.character.Enemy
 import cl.uchile.dcc.finalreality.model.character.GameCharacter
 import cl.uchile.dcc.finalreality.model.items.AbstractWeapon
 import java.util.concurrent.BlockingQueue
@@ -30,5 +31,14 @@ abstract class AbstractPlayerCharacter(
 
     override fun equip(weapon: AbstractWeapon) {
         _equippedWeapon = weapon
+    }
+
+    open fun DoHeal(amount: Int) {
+        var total=this.currentHp+amount
+        if(total>this.maxHp) currentHp=maxHp
+        else currentHp=total
+        }
+    fun attack(target: Enemy){
+        target.DoDamage(this.equippedWeapon.damage)
     }
 }

@@ -7,12 +7,14 @@
  */
 package cl.uchile.dcc.finalreality.model.character.player
 
+import cl.uchile.dcc.finalreality.model.character.Enemy
 import cl.uchile.dcc.finalreality.model.character.GameCharacter
 import cl.uchile.dcc.finalreality.model.items.AbstractWeapon
 import cl.uchile.dcc.finalreality.model.items.Knife
 import cl.uchile.dcc.finalreality.model.items.Staff
 import java.util.Objects
 import java.util.concurrent.BlockingQueue
+import kotlin.random.Random.Default.nextInt
 
 /**
  * A Black Mage is a type of player character that can cast black magic.
@@ -74,5 +76,21 @@ class BlackMage(
     }
     fun equipKnife(knife: Knife) {
         _equippedWeapon = knife
+    }
+
+    fun Thunder(target: Enemy){
+        if(this.currentMp>=15){
+            target.DoDamage(this.equippedWeapon.damage)
+            val ParChance=nextInt(9)
+            if(ParChance<=3) target.Paralysis()
+            currentMp-=15
+            }
+    }
+    fun Fire(target: Enemy){
+        if(this.currentMp>=15){
+            target.DoDamage(this.equippedWeapon.damage)
+            val BurnChance=nextInt(6)
+            if(BurnChance<=1) target.Burn(this.equippedWeapon.damage)
+        }
     }
 }

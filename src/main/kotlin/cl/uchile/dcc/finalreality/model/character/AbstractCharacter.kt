@@ -50,11 +50,14 @@ abstract class AbstractCharacter(
             }
 
             is Enemy -> {
-                scheduledExecutor.schedule(
-                    /* command = */ ::addToQueue,
-                    /* delay = */ (this.weight / 10).toLong(),
-                    /* unit = */ TimeUnit.SECONDS
-                )
+                this.StartTurn()
+                if(this.state.CheckState()!="Paralysis") {
+                    scheduledExecutor.schedule(
+                        /* command = */ ::addToQueue,
+                        /* delay = */ (this.weight / 10).toLong(),
+                        /* unit = */ TimeUnit.SECONDS
+                    )
+                }
             }
         }
     }
