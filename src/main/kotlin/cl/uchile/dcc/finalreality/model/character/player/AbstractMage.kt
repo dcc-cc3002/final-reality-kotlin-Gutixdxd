@@ -5,7 +5,7 @@ import cl.uchile.dcc.finalreality.model.character.GameCharacter
 import java.util.concurrent.BlockingQueue
 
 abstract class AbstractMage(
-    name: String,
+    name: String?,
     maxHp: Int,
     defense: Int,
     turnsQueue: BlockingQueue<GameCharacter>,

@@ -1,9 +1,7 @@
 package cl.uchile.dcc.finalreality.model.character
 
 import cl.uchile.dcc.finalreality.exceptions.Require
-import cl.uchile.dcc.finalreality.model.character.player.BaseState
 import cl.uchile.dcc.finalreality.model.character.player.EnemyState
-import cl.uchile.dcc.finalreality.model.character.player.Poison
 import java.util.Objects
 import java.util.concurrent.BlockingQueue
 

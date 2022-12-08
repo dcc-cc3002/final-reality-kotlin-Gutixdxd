@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit
  * @author <a href="https://github.com/Gutixdxd">Guti</a>
  */
 abstract class AbstractCharacter(
-    override val name: String,
+    override val name: String?,
     maxHp: Int,
     defense: Int,
     private val turnsQueue: BlockingQueue<GameCharacter>,

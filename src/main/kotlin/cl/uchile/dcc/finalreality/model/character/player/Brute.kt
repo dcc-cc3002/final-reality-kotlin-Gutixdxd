@@ -22,7 +22,7 @@ import java.util.concurrent.BlockingQueue
  * @author <a href="https://github.com/Gutixdxd">Guti</a>
  */
 class Brute(
-    name: String,
+    name: String?,
     maxHp: Int,
     defense: Int,
     turnsQueue: BlockingQueue<GameCharacter>

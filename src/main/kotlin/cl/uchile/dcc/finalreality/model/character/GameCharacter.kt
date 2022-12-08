@@ -18,7 +18,7 @@ package cl.uchile.dcc.finalreality.model.character
  * @author <a href="https://github.com/Gutixdxd">Guti</a>
  */
 interface GameCharacter {
-    val name: String
+    val name: String?
     val maxHp: Int
     var currentHp: Int
     val defense: Int

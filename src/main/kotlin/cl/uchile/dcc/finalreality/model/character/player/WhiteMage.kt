@@ -31,7 +31,7 @@ import java.util.concurrent.BlockingQueue
  * @author <a href="https://github.com/Gutixdxd">Guti</a>
  */
 class WhiteMage(
-    name: String,
+    name: String?,
     maxHp: Int,
     defense: Int,
     turnsQueue: BlockingQueue<GameCharacter>,

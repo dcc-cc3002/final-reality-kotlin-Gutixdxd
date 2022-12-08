@@ -33,7 +33,7 @@ import kotlin.random.Random.Default.nextInt
  * @author <a href="https://github.com/Gutixdxd">Guti</a>
  */
 class BlackMage(
-    name: String,
+    name: String?,
     maxHp: Int,
     defense: Int,
     turnsQueue: BlockingQueue<GameCharacter>,
