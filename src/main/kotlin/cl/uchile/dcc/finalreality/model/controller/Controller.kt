@@ -15,56 +15,141 @@ import cl.uchile.dcc.finalreality.model.items.Bow
 import cl.uchile.dcc.finalreality.model.items.Knife
 import cl.uchile.dcc.finalreality.model.items.Staff
 import cl.uchile.dcc.finalreality.model.items.Sword
+import java.util.Scanner
 import kotlin.random.Random.Default.nextInt
 
+/**
+ * Class that manages a game, asking the player to input information to
+ * choose their character and the level of challenge desired
+ * The player has to choose 4 characters and in case of a miss input
+ * the system will choose white mage
+ *
+ * @param Party Is the player characters in a list
+ * @param EnemyParty Is the enemy team in a list
+ *
+ * Constructor creates a new game instance
+ *
+ * @author <a href="https://github.com/Gutixdxd">Guti</a>
+ */
 class Controller {
 
-    val Party= mutableListOf<PlayerCharacter>(this.Newchar(),this.Newchar(), this.Newchar(), this.Newchar())
+    val Party= mutableListOf<PlayerCharacter>()
     val EnemyParty= mutableListOf<Enemy>()
-    fun Newchar(): AbstractPlayerCharacter {
-        print("Enter a class name, knight, thief, brute, engineer, blackmage or whitemage")
-        val Cclass= readLine()
+    fun Newchar(Cclass: String, name: String): AbstractPlayerCharacter {
+
         if(Cclass=="knight"){
-            val name= readLine()
-            val char=Knight( name, nextInt(9, 15), nextInt(9, 15), queue)
-            val basicWeapon=Sword("stick", 2,6)
+            val char=Knight( name,
+                             nextInt(9, 15),
+                             nextInt(9, 15),
+                             queue
+            )
+            val basicWeapon=Sword(
+                "stick",
+                2,
+                6
+            )
             char.equip(basicWeapon)
             return char
         }
         if(Cclass=="thief"){
-            val name= readLine()
-            val char=Thief( name, nextInt(9, 15), nextInt(9, 15), queue)
-            val basicWeapon=Knife("broken bottle", 1,5)
+            val char=Thief(
+                name,
+                nextInt(9, 15),
+                nextInt(9, 15),
+                queue
+            )
+            val basicWeapon=Knife(
+                "broken bottle",
+                1,
+                5
+            )
             char.equip(basicWeapon)
             return char
         }
         if(Cclass=="brute"){
-            val name= readLine()
-            val char=Brute( name, nextInt(9, 15), nextInt(9, 15), queue)
-            val basicWeapon= Axe("big stick", 3, 8)
+            val char=Brute(
+                name,
+                nextInt(9, 15),
+                nextInt(9, 15),
+                queue
+            )
+            val basicWeapon= Axe(
+                "big stick",
+                3,
+                8
+            )
             char.equip(basicWeapon)
             return char
         }
         if(Cclass=="engineer"){
-            val name= readLine()
-            val char=Engineer( name, nextInt(9, 15), nextInt(9, 15), queue)
-            val basicWeapon= Bow("stone", 1, 5)
+            val char=Engineer(
+                name,
+                nextInt(9, 15),
+                nextInt(9, 15),
+                queue
+            )
+            val basicWeapon= Bow(
+                "stone",
+                1,
+                5
+            )
             char.equip(basicWeapon)
             return char
         }
         if(Cclass=="blackmage"){
-            val name= readLine()
-            val char=BlackMage( name, nextInt(9, 15), nextInt(9, 15),queue, nextInt(9, 15))
-            val basicWeapon= Staff("bone", 3, 7)
+            val char=BlackMage(
+                name,
+                nextInt(9, 15),
+                nextInt(9, 15),
+                queue,
+                nextInt(9, 15)
+            )
+            val basicWeapon= Staff(
+                "bone",
+                3,
+                7
+            )
             char.equip(basicWeapon)
             return char
         }
         else{ //WhiteMage is default in case class name is mistaken
-            val name= readLine()
-            val char=WhiteMage( name, nextInt(9, 15), nextInt(9, 15), queue, nextInt(9, 15))
-            val basicWeapon= Staff("book", 2, 6)
+            val char=WhiteMage(
+                name,
+                nextInt(9, 15),
+                nextInt(9, 15),
+                queue,
+                nextInt(9, 15)
+            )
+            val basicWeapon= Staff(
+                "book",
+                2,
+                6)
             char.equip(basicWeapon)
+            char.waitTurn()
             return char
         }
+    }
+    fun NewEnemy(Challenge: Int){
+        val enemy=Enemy(
+            "Mountain Bandit",
+            nextInt(5*Challenge, 15*Challenge),
+            nextInt(5*Challenge,15*Challenge),
+            nextInt(1*Challenge,3*Challenge),
+            nextInt(5*Challenge,15*Challenge),
+            queue
+        )
+        EnemyParty.add(element = enemy)
+    }
+
+    fun StartGame(challenge: Int){
+        var numberEnemy= nextInt(1, 5)
+        while(numberEnemy>=0){
+            NewEnemy(challenge)
+            numberEnemy-=1
+        }
+        Newchar("knight", "Escanor")
+        Newchar("whitemage", "Gandalf")
+        Newchar("thief", "Kazuma")
+        Newchar("engineer", "Tesla")
     }
 }
