@@ -8,7 +8,11 @@
 package cl.uchile.dcc.finalreality.model.character.player
 
 import cl.uchile.dcc.finalreality.model.character.GameCharacter
-import java.util.*
+import cl.uchile.dcc.finalreality.model.items.AbstractWeapon
+import cl.uchile.dcc.finalreality.model.items.Axe
+import cl.uchile.dcc.finalreality.model.items.Knife
+import cl.uchile.dcc.finalreality.model.items.Sword
+import java.util.Objects
 import java.util.concurrent.BlockingQueue
 
 /**
@@ -24,28 +28,47 @@ import java.util.concurrent.BlockingQueue
  * @property currentHp The current HP of the character.
  *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~Your name~
+ * @author <a href="https://github.com/Gutixdxd">Guti</a>
  */
 class Knight(
-    name: String, maxHp: Int, defense: Int,
+    name: String?,
+    maxHp: Int,
+    defense: Int,
     turnsQueue: BlockingQueue<GameCharacter>
 ) : AbstractPlayerCharacter(name, maxHp, defense, turnsQueue) {
     override fun equals(other: Any?) = when {
-        this === other                 -> true
-        other !is Knight               -> false
+        this === other -> true
+        other !is Knight -> false
         hashCode() != other.hashCode() -> false
-        name != other.name             -> false
-        maxHp != other.maxHp           -> false
-        defense != other.defense       -> false
-        else                           -> true
+        name != other.name -> false
+        maxHp != other.maxHp -> false
+        defense != other.defense -> false
+        currentHp != other.currentHp -> false
+        else -> true
     }
 
     override fun hashCode() = Objects.hash(Knight::class, name, maxHp, defense)
 
-    override fun toString() = "Knight { " +
-      "name: '$name', " +
-      "maxHp: $maxHp, " +
-      "defense: $defense, " +
-      "currentHp: $currentHp " +
-      "}"
+    override fun toString() = "Knight(" +
+        "name='$name' " +
+        "maxHp=$maxHp, " +
+        "currentHp=$currentHp, " +
+        "defense=$defense)"
+
+    override fun equip(weapon: AbstractWeapon) {
+        weapon.equipToKnight(this)
+    }
+
+    private lateinit var _equippedWeapon: AbstractWeapon
+    override val equippedWeapon: AbstractWeapon
+        get() = _equippedWeapon
+    fun equipSword(sword: Sword) {
+        _equippedWeapon = sword
+    }
+    fun equipAxe(axe: Axe) {
+        _equippedWeapon = axe
+    }
+    fun equipKnife(knife: Knife) {
+        _equippedWeapon = knife
+    }
 }

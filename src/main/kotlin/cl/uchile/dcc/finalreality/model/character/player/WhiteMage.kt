@@ -7,9 +7,11 @@
  */
 package cl.uchile.dcc.finalreality.model.character.player
 
-import cl.uchile.dcc.finalreality.exceptions.Require
+import cl.uchile.dcc.finalreality.model.character.Enemy
 import cl.uchile.dcc.finalreality.model.character.GameCharacter
-import java.util.*
+import cl.uchile.dcc.finalreality.model.items.AbstractWeapon
+import cl.uchile.dcc.finalreality.model.items.Staff
+import java.util.Objects
 import java.util.concurrent.BlockingQueue
 
 /**
@@ -26,35 +28,65 @@ import java.util.concurrent.BlockingQueue
  * @property currentHp The current HP of the character.
  *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~Your name~
+ * @author <a href="https://github.com/Gutixdxd">Guti</a>
  */
 class WhiteMage(
-  name: String,
-  maxHp: Int,
-  maxMp: Int,
-  defense: Int,
-  turnsQueue: BlockingQueue<GameCharacter>
-) : AbstractPlayerCharacter(name, maxHp, defense, turnsQueue) {
-    val maxMp = Require.Stat(maxMp, "Max MP") atLeast 0
-    var currentMp: Int = maxMp
-        set(value) {
-            field = Require.Stat(value, "Current MP") inRange 0..maxMp
-        }
+    name: String?,
+    maxHp: Int,
+    defense: Int,
+    turnsQueue: BlockingQueue<GameCharacter>,
+    maxMp: Int
+) : AbstractMage(name, maxHp, defense, turnsQueue, maxMp) {
 
     override fun equals(other: Any?) = when {
-        this === other                 -> true
-        other !is WhiteMage            -> false
+        this === other -> true
+        other !is WhiteMage -> false
         hashCode() != other.hashCode() -> false
-        name != other.name             -> false
-        maxHp != other.maxHp           -> false
-        maxMp != other.maxMp           -> false
-        defense != other.defense       -> false
-        else                           -> true
+        name != other.name -> false
+        maxHp != other.maxHp -> false
+        maxMp != other.maxMp -> false
+        defense != other.defense -> false
+        currentMp != other.currentMp -> false
+        currentHp != other.currentHp -> false
+        else -> true
     }
 
     override fun hashCode() = Objects.hash(WhiteMage::class, name, maxHp, maxMp, defense)
 
-    override fun toString() =
-      "WhiteMage(currentMp=$currentMp, maxMp=$maxMp, maxHp=$maxHp, currentHp=$currentHp, " +
-        "defense=$defense, name='$name')"
+    override fun toString() = "WhiteMage(" +
+        "name='$name' " +
+        "maxHp=$maxHp, " +
+        "currentHp=$currentHp, " +
+        "defense=$defense, " +
+        "maxMp=$maxMp, " +
+        "currentMp=$currentMp)"
+
+    override fun equip(weapon: AbstractWeapon) {
+        weapon.equipToWhiteMage(this)
+    }
+
+    private lateinit var _equippedWeapon: AbstractWeapon
+    override val equippedWeapon: AbstractWeapon
+        get() = _equippedWeapon
+    fun equipStaff(staff: Staff) {
+        _equippedWeapon = staff
+    }
+
+    fun Heal(target: AbstractPlayerCharacter) {
+        if(this.currentMp>=15){
+            target.DoHeal((target.currentHp*0.3).toInt())
+        }
+    }
+    fun Poison(target: Enemy){
+        if(this.currentMp>=40){
+            this.currentMp-=40
+            target.Poison(this.equippedWeapon.damage)
+        }
+    }
+    fun Paralysis(target: Enemy){
+        if(this.currentMp>=40){
+            this.currentMp-=40
+            target.Paralysis()
+        }
+    }
 }

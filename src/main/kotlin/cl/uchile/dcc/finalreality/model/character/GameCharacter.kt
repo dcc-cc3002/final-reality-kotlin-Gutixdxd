@@ -4,6 +4,7 @@ package cl.uchile.dcc.finalreality.model.character
  * This represents a character from the game.
  * A character can be controlled by the player or by the CPU (an enemy).
  *
+ *
  * @property name
  *    The name of the character.
  * @property maxHp
@@ -14,10 +15,10 @@ package cl.uchile.dcc.finalreality.model.character
  *    The current health points of the character.
  *
  * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~Your name~
+ * @author <a href="https://github.com/Gutixdxd">Guti</a>
  */
 interface GameCharacter {
-    val name: String
+    val name: String?
     val maxHp: Int
     var currentHp: Int
     val defense: Int
@@ -27,4 +28,7 @@ interface GameCharacter {
      * seconds before adding the character to the queue.
      */
     fun waitTurn()
+    fun DoDamage(i: Int){
+        this.currentHp-=i
+    }
 }
